@@ -45,11 +45,11 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_OS_SNR.png" alt="SNR" style="width: 100%;">
+    <img src="D:\GNSS\OS_T1\OS_SNR_vs_Satellite.png" alt="SNR" style="width: 100%;">
     <p><strong>SNR:</strong> All selected satellites have SNR values above the 16 dB-Hz threshold, some reaching 40–50 dB-Hz.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_OS_DopplerShift.png" alt="Doppler Shift" style="width: 100%;">
+    <img src="D:\GNSS\OS_T1\OS_Doppler_vs_Satellite.png" alt="Doppler Shift" style="width: 100%;">
     <p><strong>Doppler Shift:</strong> Ranges from about -2000 Hz to +2000 Hz.</p>
   </div>
 </div>
@@ -73,7 +73,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_U_SNR.png" alt="SNR" style="width: 100%;">
+    <img src="D:\GNSS\UC_T1\sv&SNR.jpg" alt="SNR" style="width: 100%;">
     <p><strong>SNR:</strong> Fewer satellites exceed the 11 dB-Hz threshold, indicating weaker signal quality.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
