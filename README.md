@@ -1,4 +1,4 @@
-# AAE6102 Satellite Communication and Navigation Assignment 1
+# Assignment 1 Report
 
 **Course:** AAE6102 Satellite Communication and Navigation  
 **Institution:** The Hong Kong Polytechnic University, Department of Aeronautical and Aviation Engineering  
@@ -9,122 +9,194 @@
 
 ## Overview
 
-The assignment focuses on processing real Intermediate Frequency (IF) datasets collected under two different environments:
-- **OpenSky**: An environment with minimal obstructions and strong signal quality.
-- **Urban**: A challenging environment with significant signal blockage, multipath interference, and urban noise.
+This report analyzes and evaluates GNSS signal processing under two environments: **OpenSky** and **Urban**. The analysis is divided into five tasks covering acquisition, tracking, navigation data decoding, positioning using Weighted Least Squares (WLS), and positioning using an Extended Kalman Filter (EKF). All images referenced below are included in this repository.
 
 ---
 
-## Task 1: Acquisition
+## Table of Contents
 
-### OpenSky Dataset
-In the OpenSky dataset, acquisition results reveal:
-- **Doppler Shift**: Varies between several hundred and a few thousand Hertz due to differences in relative satellite motion and receiver geometry. Minimal obstructions result in accurate Doppler estimates.
-- **Code Phase**: Each satellite shows a distinct code phase value corresponding to its specific signal travel delay. Accurate code phase determination is crucial for reliable pseudorange measurements.
-- **Fine Frequency**: Adjustments cluster around the intermediate frequency of 4.58 MHz, indicating a successful and precise acquisition process.
-- **SNR**: High signal-to-noise ratios (e.g., SV16, SV31) confirm strong signal quality and minimal multipath effects.
-
-![Task 1 OpenSky](images/Task1_OpenSky.png)
-
-### Urban Dataset
-The Urban dataset presents several challenges:
-- **Doppler Shift**: Although the range remains similar, increased variability is observed due to complex signal paths and reflections.
-- **Code Phase**: Greater deviations are noted, likely caused by signal blockage and multipath distortion, leading to less reliable pseudorange measurements.
-- **Fine Frequency**: Slightly larger deviations indicate difficulty in achieving a stable lock in the presence of urban interference.
-- **SNR**: Lower overall SNR values due to obstructions (e.g., buildings) and multipath effects, necessitating more robust acquisition and tracking strategies.
-
-![Task 1 Urban](images/Task1_Urban.png)
-
----
-
-## Task 2: Tracking
-
-### OpenSky Dataset
-Tracking performance in the OpenSky dataset is evidenced by:
-- **Correlation Functions**: Well-defined early, prompt, and late peaks for both in-phase and quadrature-phase components. The prompt in-phase correlation peak is the highest, indicating precise code alignment and effective tracking.
-- **Symmetry**: The symmetric early and late correlator values suggest that the tracking loop is successfully locked onto the true code phase.
-
-![Task 2 OpenSky](images/Task2_OpenSky.png)
-
-### Urban Dataset
-In the Urban dataset, tracking is more challenging:
-- **Correlation Functions**: The peaks are less pronounced, with the prompt in-phase peak appearing broader and less defined, indicating the impact of multipath and signal attenuation.
-- **Increased Variability**: The quadrature-phase plots show greater fluctuations, reflecting additional noise and residual errors in carrier tracking. This underscores the need for robust tracking algorithms.
-
-![Task 2 Urban](images/Task2_Urban.png)
+1. [Task 1 – Acquisition](#task-1--acquisition)
+   - [1.1 OpenSky](#11-opensky)
+   - [1.2 Urban](#12-urban)
+2. [Task 2 – Tracking](#task-2--tracking)
+   - [2.1 OpenSky](#21-opensky)
+   - [2.2 Urban](#22-urban)
+3. [Task 3 – Navigation Data Decoding](#task-3--navigation-data-decoding)
+   - [3.1 OpenSky](#31-opensky)
+   - [3.2 Urban](#32-urban)
+4. [Task 4 – Position and Velocity Estimation (WLS)](#task-4--position-and-velocity-estimation-wls)
+   - [4.1 OpenSky](#41-opensky)
+   - [4.2 Urban](#42-urban)
+5. [Task 5 – Kalman Filter-based Positioning (EKF)](#task-5--kalman-filter-based-positioning-ekf)
+   - [5.1 OpenSky](#51-opensky)
+   - [5.2 Urban](#52-urban)
+6. [Ephemeris Parameters Overview](#ephemeris-parameters-overview)
+7. [Conclusion](#conclusion)
 
 ---
 
-## Task 3: Navigation Data Decoding
+## Task 1 – Acquisition
 
-### OpenSky Dataset
-The decoded ephemeris data for the OpenSky dataset are grouped into several categories:
-- **Time-Related Parameters**: TOW, Week Number, toe, and toc provide essential timing references and confirm that the broadcast messages are consistent with the GPS epoch.
-- **Satellite Clock Corrections**: Parameters such as af0, af1, af2, and IODC ensure accurate correction of satellite clock biases and drifts.
-- **Orbital Parameters**: Elements like sqrtA, e, M0, Δn, and i0 (typically near 55°) conform to standard GPS orbits. Correction terms (Crs, Crc, Cus, Cuc, Cis, Cic) and TGD facilitate precise satellite position computations.
-- **Update Flags**: Recent update flags confirm the reliability of the broadcast ephemeris.
+### 1.1 OpenSky
 
-![Task 3 OpenSky](images/Task3_OpenSky.png)
+## Task 1 – Acquisition
 
-### Urban Dataset
-In urban environments, severe signal blockage and multipath effects can lead to situations where only one satellite's navigation data is available. This is due to:
-- **Severe Interference and Multipath**: Intense urban interference and pronounced multipath can degrade or completely block signals from most satellites.
-- **Limited Usable Data**: Only the satellite with the most favorable geometry or the least obstruction may provide usable navigation data.
+### 1.1 OpenSky
 
-![Task 3 Urban](images/Task3_Urban.png)
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T1_OS_SNR.png" alt="SNR" style="width: 100%;">
+    <p><strong>SNR:</strong> All selected satellites have SNR values above the 16 dB-Hz threshold, some reaching 40–50 dB-Hz.</p>
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T1_OS_DopplerShift.png" alt="Doppler Shift" style="width: 100%;">
+    <p><strong>Doppler Shift:</strong> Ranges from about -2000 Hz to +2000 Hz.</p>
+  </div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T1_OS_FineFrequency.png" alt="Fine Frequency" style="width: 100%;">
+    <p><strong>Fine Frequency:</strong> Small deviations confirm proper frequency alignment.</p>
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T1_OS_CodePhase.png" alt="Code Phase" style="width: 100%;">
+    <p><strong>Code Phase:</strong> Variation indicates different signal travel times, consistent with open-sky conditions.</p>
+  </div>
+</div>
 
----
+- **SNR:** All selected satellites have SNR values above the 16 dB-Hz threshold, some reaching 40–50 dB-Hz.
+- **Doppler Shift:** Ranges from about -2000 Hz to +2000 Hz.
+- **Fine Frequency:** Small deviations confirm proper frequency alignment.
+- **Code Phase:** Variation indicates different signal travel times, consistent with open-sky conditions.
 
-## Task 4: Position and Velocity Estimation (WLS)
+### 1.2 Urban
 
-### OpenSky Dataset
-Positioning via weighted least squares (WLS) in the OpenSky dataset shows small deviations from the ground truth due to:
-- **Residual Errors**: Slight residual satellite clock and ephemeris errors remain even after applying standard corrections.
-- **Atmospheric Delays**: Incomplete compensation for ionospheric and tropospheric delays introduces small offsets in pseudoranges.
-- **Minor Multipath**: Minor reflections from nearby structures or the ground can slightly alter measured pseudoranges.
-- **Satellite Geometry**: Suboptimal satellite geometry (GDOP effects) can amplify measurement noise.
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T1_U_SNR.png" alt="SNR" style="width: 100%;">
+    <p><strong>SNR:</strong> Fewer satellites exceed the 11 dB-Hz threshold, indicating weaker signal quality.</p>
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T1_U_Doppler.png" alt="Doppler Shift" style="width: 100%;">
+    <p><strong>Doppler Shift:</strong> Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.</p>
+  </div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T1_U_Finefreq.png" alt="Fine Frequency" style="width: 100%;">
+    <p><strong>Fine Frequency:</strong> Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.</p>
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T1_U_CodeDelay.png" alt="Code Delay" style="width: 100%;">
+    <p><strong>Code Delay:</strong> Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.</p>
+  </div>
+</div>
 
-![Task 4 OpenSky](images/Task4_OpenSky.png)
-
----
-
-## Task 5: Kalman Filter-Based Positioning (EKF)
-
-### OpenSky Dataset
-An Extended Kalman Filter (EKF) is used for position and velocity estimation. Despite favorable conditions, the results differ from the ground truth due to:
-- **Initial State Sensitivity**: Inaccuracies in the initial state can delay convergence or introduce bias.
-- **Measurement Noise**: Residual errors in pseudorange and Doppler measurements (from minor clock/ephemeris errors and multipath) affect filter performance.
-- **Noise Tuning**: Improper tuning of the EKF’s noise covariance parameters can lead to over- or under-correction.
-- **Satellite Geometry**: Occasional suboptimal satellite geometry magnifies minor errors, impacting overall accuracy.
-
-![Task 5 OpenSky](images/Task5_OpenSky.png)
-
----
-
-## Summary
-
-This report presents an analysis of GNSS signal processing across two environments:
-- **OpenSky**: Exhibits strong signal quality with reliable acquisition, tracking, navigation data decoding, and positioning. Minor errors arise from residual satellite and atmospheric effects.
-- **Urban**: Suffers from significant signal blockage, multipath interference, and urban noise, often resulting in reduced satellite visibility and degraded positioning performance.
-
-The analysis emphasizes the need for robust algorithms and careful parameter tuning to achieve accurate GNSS navigation under varying environmental conditions.
-
----
-
-## Repository Contents
-
-- **Source Code**: Complete GNSS SDR signal processing implementation.
-- **Datasets**: OpenSky and Urban IF datasets with detailed specifications.
-- **Technical Report**: This README serves as an overview; refer to the full report for an in-depth analysis.
+- **SNR:** Fewer satellites exceed the 11 dB-Hz threshold, indicating weaker signal quality.
+- **Doppler, Code Phase, Fine Frequency:** Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.
 
 ---
 
-## Acknowledgments
+## Task 2 – Tracking
 
-- **Dr. Hoi-Fung Ng**
-- **Teaching Assistants**
-- **Course Lecturer**
+### 2.1 OpenSky
+
+![Task2 OpenSky](images/task2_opensky.png)
+
+- **Correlation Functions:** Well-defined peaks in the in-phase channels (e.g., satellites 22 and 32) indicate stable tracking.
+- **Multipath:** Minimal, as shown by small quadrature components.
+- **Code Lock:** Robust performance in open-sky conditions.
+
+### 2.2 Urban
+
+![Task2 Urban](images/task2_urban.png)
+
+- **Correlation Peaks:** More distorted and less pronounced (e.g., satellites 3 and 22) due to stronger multipath effects.
+- **Fluctuations:** Increased variation in both in-phase and quadrature components reflect challenging tracking conditions.
 
 ---
 
-Feel free to explore the repository for additional details and source code implementations.
+## Task 3 – Navigation Data Decoding
+
+### 3.1 OpenSky
+
+![Task3 OpenSky](images/task3_opensky.png)
+
+- **Ephemeris Data:** Decoded navigation data is grouped into:
+  - **Core Ephemeris Parameters:** Semi-major axis, eccentricity, inclination, right ascension, and argument of perigee.
+  - **Clock Corrections:** Parameters such as af0, af1, af2, and TGD.
+  - **Health/Validity Fields:** Such as IODE and SV health.
+  - **Reference Times:** TOW, TOE, and TOC for proper orbital and clock modeling.
+
+### 3.2 Urban
+
+![Task3 Urban](images/task3_urban.png)
+
+- **Ephemeris Data:** Similar to OpenSky, providing essential orbital parameters and clock corrections for positioning, with processing adapted for urban conditions.
+
+---
+
+## Task 4 – Position and Velocity Estimation (WLS)
+
+### 4.1 OpenSky
+
+![Task4 OpenSky](images/task4_opensky.png)
+
+- **Positioning:** WLS solutions form a tight cluster, indicating high accuracy with minimal multipath interference.
+- **Velocity:** Components (Vx, Vy, Vz) remain stable and close to zero, reflecting reliable motion estimates.
+
+### 4.2 Urban
+
+![Task4 Urban](images/task4_urban.png)
+
+- **Positioning:** WLS solutions exhibit a broader scatter due to multipath and signal blockages.
+- **Velocity:** Greater fluctuations in Vx, Vy, and Vz indicate reduced reliability in motion estimates under urban conditions.
+
+---
+
+## Task 5 – Kalman Filter-based Positioning (EKF)
+
+### 5.1 OpenSky
+
+![Task5 OpenSky](images/task5_opensky.png)
+
+- **EKF Positioning:** Produces a tight cluster of position estimates, reflecting stable satellite geometry and minimal multipath.
+- **Improved Velocity:** Smoother and more consistent velocity estimates due to the dynamic model and prior state incorporation.
+
+### 5.2 Urban
+
+![Task5 Urban](images/task5_urban.png)
+
+- **EKF Positioning:** Position estimates are more scattered due to multipath and signal blockages.
+- **Velocity Variability:** Despite some noise reduction from the EKF, velocity components still show significant fluctuations in urban environments.
+
+---
+
+## Ephemeris Parameters Overview
+
+| **Parameter**                         | **Definition**                                                                                                                         |
+|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| **Semi-major axis (A)**               | The size of the satellite’s orbit; the average distance from the Earth's center to the satellite.                                        |
+| **Eccentricity (e)**                  | Describes the orbit's deviation from a circle (0 = circular, near 1 = highly elliptical).                                                 |
+| **Inclination (i)**                   | The angle between the orbital plane and the Earth's equatorial plane.                                                                    |
+| **Right Ascension (Ω)**               | Angle in the equatorial plane from a reference direction to the ascending node, where the satellite crosses the equator northbound.         |
+| **Argument of Perigee (ω)**           | The angle from the ascending node to the satellite's closest approach (perigee) to Earth.                                                 |
+| **Mean Anomaly at Reference Time (M₀)** | Indicates how far the satellite has traveled along its orbit from perigee at the reference time.                                           |
+| **Ω̇ (Rate of Right Ascension)**       | The rate at which the right ascension changes over time.                                                                                 |
+| **IDOT (Rate of Inclination)**         | The rate of change of the inclination angle over time.                                                                                   |
+| **Cuc, Cus, Crc, Crs, Cic, Cis**       | Correction terms for orbital perturbations in radial, along-track, and cross-track directions.                                             |
+| **af₀, af₁, af₂ (Clock Terms)**        | Parameters representing the satellite clock offset, drift, and drift rate used for clock correction.                                        |
+| **TGD (Group Delay)**                  | Corrects for differences in signal paths due to hardware or other factors.                                                                 |
+| **IODE (Issue of Data Ephemeris)**       | Version number indicating the current set of ephemeris data.                                                                               |
+| **TOE, TOC, TOW (Times)**              | Reference times for ephemeris (TOE), clock (TOC), and week/time-of-week (TOW) calculations.                                                 |
+| **SV Health**                          | Status indicator showing whether the satellite is operationally healthy or experiencing issues.                                            |
+
+---
+
+## Conclusion
+
+The analysis shows that under OpenSky conditions, both WLS and EKF methods yield robust positioning with tight clusters and stable velocity estimates due to strong signal quality and minimal multipath. In contrast, urban environments introduce significant challenges—multipath effects and signal blockages lead to broader scatter in position estimates and higher variability in velocity measurements. This comprehensive evaluation across acquisition, tracking, navigation data decoding, and positioning illustrates the differing impacts of environmental conditions on GNSS performance.
+
+---
+
+*Note: All images referenced in this document are included in the repository. Ensure that the image paths (e.g., `images/task1_opensky.png`) match the actual locations of your image files.*
