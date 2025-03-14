@@ -32,6 +32,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
    - [5.2 Urban](#52-urban)
 6. [Ephemeris Parameters Overview](#ephemeris-parameters-overview)
 7. [Conclusion](#conclusion)
+[Acknowledgements](#acknowledgements)
 
 ---
 
