@@ -93,7 +93,14 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 ### 2.1 OpenSky
 
-![Task2 OpenSky](images/task2_opensky.png)
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T2_OS_22.png" alt="Correlation Functions" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T2_OS_32.png" alt="Multipath" style="width: 100%;">
+  </div>
+</div>
 
 - **Correlation Functions:** Well-defined peaks in the in-phase channels (e.g., satellites 22 and 32) indicate stable tracking.
 - **Multipath:** Minimal, as shown by small quadrature components.
