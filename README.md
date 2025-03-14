@@ -78,11 +78,11 @@ This report analyzes and evaluates GNSS signal processing under two environments
 </div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_UC_Finefreq.png" alt="Fine Frequency" style="width: 100%;">
+    <img src="images/T1_UC_Finefreq.jpg" alt="Fine Frequency" style="width: 100%;">
     <p><strong>Fine Frequency:</strong> Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_UC_Codedelay.png" alt="Code Delay" style="width: 100%;">
+    <img src="images/T1_UC_Codedelay.jpg" alt="Code Delay" style="width: 100%;">
     <p><strong>Code Delay:</strong> Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.</p>
   </div>
 </div>
@@ -108,7 +108,14 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 ### 2.2 Urban
 
-![Task2 Urban](images/task2_urban.png)
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T2_UC_3.jpg" alt="Correlation Functions" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T2_UC_22.jpg" alt="Multipath" style="width: 100%;">
+  </div>
+</div>
 
 - **Correlation Peaks:** More distorted and less pronounced (e.g., satellites 3 and 22) due to stronger multipath effects.
 - **Fluctuations:** Increased variation in both in-phase and quadrature components reflect challenging tracking conditions.
@@ -121,6 +128,15 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 ![Task3 OpenSky](images/task3_opensky.png)
 
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T3_OS_1.png" alt="Correlation Functions" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T3_OS_2.png" alt="Multipath" style="width: 100%;">
+  </div>
+</div>
+
 - **Ephemeris Data:** Decoded navigation data is grouped into:
   - **Core Ephemeris Parameters:** Semi-major axis, eccentricity, inclination, right ascension, and argument of perigee.
   - **Clock Corrections:** Parameters such as af0, af1, af2, and TGD.
@@ -129,7 +145,14 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 ### 3.2 Urban
 
-![Task3 Urban](images/task3_urban.png)
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T3_UC_1.png" alt="Correlation Functions" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images/T3_UC_2.png" alt="Multipath" style="width: 100%;">
+  </div>
+</div>
 
 - **Ephemeris Data:** Similar to OpenSky, providing essential orbital parameters and clock corrections for positioning, with processing adapted for urban conditions.
 
@@ -139,17 +162,29 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 ### 4.1 OpenSky
 
-![Task4 OpenSky](images/task4_opensky.png)
-
-- **Positioning:** WLS solutions form a tight cluster, indicating high accuracy with minimal multipath interference.
-- **Velocity:** Components (Vx, Vy, Vz) remain stable and close to zero, reflecting reliable motion estimates.
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images\T4_UC_Location.png" alt="SNR" style="width: 100%;">
+    <p><strong>Positioning:</strong> WLS solutions form a tight cluster, indicating high accuracy with minimal multipath interference.</p>
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images\T4_UC_V.png" alt="Doppler Shift" style="width: 100%;">
+    <p><strong>Velocity:</strong> Components (Vx, Vy, Vz) remain stable and close to zero, reflecting reliable motion estimates.</p>
+  </div>
+</div>
 
 ### 4.2 Urban
 
-![Task4 Urban](images/task4_urban.png)
-
-- **Positioning:** WLS solutions exhibit a broader scatter due to multipath and signal blockages.
-- **Velocity:** Greater fluctuations in Vx, Vy, and Vz indicate reduced reliability in motion estimates under urban conditions.
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images\T4_UC_Location.png" alt="SNR" style="width: 100%;">
+    <p><strong>Positioning:</strong> WLS solutions exhibit a broader scatter due to multipath and signal blockages.</p>
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images\T4_UC_V.png" alt="Doppler Shift" style="width: 100%;">
+    <p><strong>Velocity:</strong> CGreater fluctuations in Vx, Vy, and Vz indicate reduced reliability in motion estimates under urban conditions.</p>
+  </div>
+</div>
 
 ---
 
@@ -157,17 +192,29 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 ### 5.1 OpenSky
 
-![Task5 OpenSky](images/task5_opensky.png)
-
-- **EKF Positioning:** Produces a tight cluster of position estimates, reflecting stable satellite geometry and minimal multipath.
-- **Improved Velocity:** Smoother and more consistent velocity estimates due to the dynamic model and prior state incorporation.
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images\T5_UC_Location.png" alt="SNR" style="width: 100%;">
+    <p><strong>EKF Positioning:</strong> Produces a tight cluster of position estimates, reflecting stable satellite geometry and minimal multipath.</p>
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images\T5_UC_V.png" alt="Doppler Shift" style="width: 100%;">
+    <p><strong>Improved Velocity:</strong> Smoother and more consistent velocity estimates due to the dynamic model and prior state incorporation.</p>
+  </div>
+</div>
 
 ### 5.2 Urban
 
-![Task5 Urban](images/task5_urban.png)
-
-- **EKF Positioning:** Position estimates are more scattered due to multipath and signal blockages.
-- **Velocity Variability:** Despite some noise reduction from the EKF, velocity components still show significant fluctuations in urban environments.
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images\T5_UC_Location.png" alt="SNR" style="width: 100%;">
+    <p><strong>EKF Positioning:</strong> Position estimates are more scattered due to multipath and signal blockages.</p>
+  </div>
+  <div style="flex: 1; text-align: center; margin: 10px;">
+    <img src="images\T5_UC_V.png" alt="Doppler Shift" style="width: 100%;">
+    <p><strong>Velocity Variability:</strong> Despite some noise reduction from the EKF, velocity components still show significant fluctuations in urban environments.</p>
+  </div>
+</div>
 
 ---
 
@@ -198,4 +245,7 @@ The analysis shows that under OpenSky conditions, both WLS and EKF methods yield
 
 ---
 
-*Note: All images referenced in this document are included in the repository. Ensure that the image paths (e.g., `images/task1_opensky.png`) match the actual locations of your image files.*
+## Acknowledgements
+
+Thank you very much for your time, help, and support.
+
