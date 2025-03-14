@@ -45,7 +45,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="D:\OneDrive - The Hong Kong Polytechnic University\文档\GitHub\AAE6102_Assign_1_LiPeisen\images\T1_OS_SNR.png" alt="SNR" style="width: 100%;">
+    <img src="images\T1_OS_SNR.png" alt="SNR" style="width: 100%;">
     <p><strong>SNR:</strong> All selected satellites have SNR values above the 16 dB-Hz threshold, some reaching 40–50 dB-Hz.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
@@ -59,7 +59,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
     <p><strong>Fine Frequency:</strong> Small deviations confirm proper frequency alignment.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="D:\OneDrive - The Hong Kong Polytechnic University\文档\GitHub\AAE6102_Assign_1_LiPeisen\images\T1_OS_CodePhase.png" alt="Code Phase" style="width: 100%;">
+    <img src="images\T1_OS_CodePhase.png" alt="Code Phase" style="width: 100%;">
     <p><strong>Code Phase:</strong> Variation indicates different signal travel times, consistent with open-sky conditions.</p>
   </div>
 </div>
@@ -68,7 +68,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="D:\OneDrive - The Hong Kong Polytechnic University\文档\GitHub\AAE6102_Assign_1_LiPeisen\images\T1_UC_SNR.jpg" alt="SNR" style="width: 100%;">
+    <img src="images\T1_UC_SNR.jpg" alt="SNR" style="width: 100%;">
     <p><strong>SNR:</strong> Fewer satellites exceed the 11 dB-Hz threshold, indicating weaker signal quality.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
@@ -78,17 +78,14 @@ This report analyzes and evaluates GNSS signal processing under two environments
 </div>
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_U_Finefreq.png" alt="Fine Frequency" style="width: 100%;">
+    <img src="images/T1_UC_Finefreq.png" alt="Fine Frequency" style="width: 100%;">
     <p><strong>Fine Frequency:</strong> Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_U_CodeDelay.png" alt="Code Delay" style="width: 100%;">
+    <img src="images/T1_UC_Codedelay.png" alt="Code Delay" style="width: 100%;">
     <p><strong>Code Delay:</strong> Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.</p>
   </div>
 </div>
-
-- **SNR:** Fewer satellites exceed the 11 dB-Hz threshold, indicating weaker signal quality.
-- **Doppler, Code Phase, Fine Frequency:** Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.
 
 ---
 
