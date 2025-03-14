@@ -1,0 +1,94 @@
+% 假设你已经知道文件的路径
+file_path = 'navSolCT_1ms_Opensky.mat';  % 请替换为你的文件路径
+
+% 加载MAT文件
+load(file_path, 'navSolutionsCT');
+
+% 如果加载成功，可以检查变量是否在工作空间中
+disp(navSolutionsCT);
+
+% 假设已经从trackingCT_POS_updated函数中获取到navSolutionsCT，它包含伪距（rawPseudorange）和多普勒（usrVelENU）数据
+N = length(navSolutionsCT.usrPos);  % 获取数据的时刻数量
+
+% 初始化状态向量：[x, y, z, vx, vy, vz]，即用户的位置信息和速度
+x_hat = [0; 0; 0; 0; 0; 0];  % 初始状态假设位置为原点，速度为零
+P = eye(6) * 1000;  % 初始误差协方差矩阵
+
+% 设置噪声协方差矩阵
+R_pseudorange = 10;  % 伪距测量噪声（米）
+R_doppler = 0.1;  % 多普勒测量噪声（米/秒）
+
+% 从navSolutionsCT提取伪距和多普勒数据
+pseudorange = navSolutionsCT.rawPseudorange;  % 伪距数据，假设是 8×367 矩阵
+doppler = navSolutionsCT.usrVelENU;  % 多普勒数据，假设是 3×367 矩阵
+
+% 获取数据的时刻数量
+N = size(navSolutionsCT.usrPos, 1);
+num_sv = size(pseudorange, 2);  % 卫星数量，假设有 8 个卫星
+
+% 运行EKF更新
+for t = 1:N
+    % 提取当前时刻的伪距和多普勒测量
+z_pseudorange = pseudorange(t, :); % 当前伪距测量
+z_doppler = doppler(t, :); % 当前多普勒测量
+
+% 初始化 z_pred 和 z
+z_pred = zeros(2 * num_sv, 1); % 伪距和多普勒的预测值
+z = zeros(2 * num_sv, 1); % 观测值
+
+% 填充 z_pred 和 z
+for sv_idx = 1:num_sv
+    % 预测伪距和多普勒
+    predicted_pseudorange = sqrt(x_hat(1)^2 + x_hat(2)^2 + x_hat(3)^2); % 假设预测伪距为用户位置的欧几里得距离
+    z_pred(2 * sv_idx - 1) = predicted_pseudorange; % 伪距
+    % 使用多普勒数据的正确索引
+    z_pred(2 * sv_idx) = (x_hat(4) * z_doppler(1) + x_hat(5) * z_doppler(2) + x_hat(6) * z_doppler(3)); % 多普勒预测
+    % 观测值
+    z(2 * sv_idx - 1) = z_pseudorange(sv_idx); % 伪距
+    z(2 * sv_idx) = z_doppler(sv_idx); % 多普勒
+end
+
+    % 计算创新
+    y = z - z_pred;  % 创新
+
+    % 计算雅可比矩阵
+    H = computeJacobian(x_hat, z_doppler);  % 根据状态向量计算雅可比矩阵
+    F = computeStateTransition(x_hat, t);  % 计算状态转移矩阵
+
+    % 卡尔曼增益
+    S = H * P * H' + R_pseudorange;  % 计算测量协方差
+    K = P * H' / S;  % 计算卡尔曼增益
+
+    % 更新状态估计
+    x_hat = x_hat + K * y;  % 更新状态
+    P = (eye(6) - K * H) * P;  % 更新协方差矩阵
+
+    % 打印每个时刻的状态估计
+    fprintf('Step %d: Estimated position: X = %.2f, Y = %.2f, Z = %.2f, Velocity: Vx = %.2f, Vy = %.2f, Vz = %.2f\n', ...
+            t, x_hat(1), x_hat(2), x_hat(3), x_hat(4), x_hat(5), x_hat(6));
+end
+
+% 绘制位置和速度图
+figure;
+subplot(2,1,1);
+plot(x_hat(1,:), 'r', 'DisplayName', 'X Position');
+hold on;
+plot(x_hat(2,:), 'g', 'DisplayName', 'Y Position');
+plot(x_hat(3,:), 'b', 'DisplayName', 'Z Position');
+title('User Position');
+xlabel('Time Step');
+ylabel('Position (m)');
+legend;
+grid on;
+
+subplot(2,1,2);
+plot(x_hat(4,:), 'r', 'DisplayName', 'Velocity X');
+hold on;
+plot(x_hat(5,:), 'g', 'DisplayName', 'Velocity Y');
+plot(x_hat(6,:), 'b', 'DisplayName', 'Velocity Z');
+title('User Velocity');
+xlabel('Time Step');
+ylabel('Velocity (m/s)');
+legend;
+grid on;
+
