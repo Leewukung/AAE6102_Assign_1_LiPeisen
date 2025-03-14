@@ -39,10 +39,6 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 ### 1.1 OpenSky
 
-## Task 1 – Acquisition
-
-### 1.1 OpenSky
-
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
     <img src="images\T1_OS_SNR.png" alt="SNR" style="width: 100%;">
@@ -164,11 +160,11 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images\T4_UC_Location.png" alt="SNR" style="width: 100%;">
+    <img src="images\T4_OS_Location.png" alt="SNR" style="width: 100%;">
     <p><strong>Positioning:</strong> WLS solutions form a tight cluster, indicating high accuracy with minimal multipath interference.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images\T4_UC_V.png" alt="Doppler Shift" style="width: 100%;">
+    <img src="images\T4_OS_V.png" alt="Doppler Shift" style="width: 100%;">
     <p><strong>Velocity:</strong> Components (Vx, Vy, Vz) remain stable and close to zero, reflecting reliable motion estimates.</p>
   </div>
 </div>
@@ -194,11 +190,11 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images\T5_UC_Location.png" alt="SNR" style="width: 100%;">
+    <img src="images\T5_OS_Location.png" alt="SNR" style="width: 100%;">
     <p><strong>EKF Positioning:</strong> Produces a tight cluster of position estimates, reflecting stable satellite geometry and minimal multipath.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images\T5_UC_V.png" alt="Doppler Shift" style="width: 100%;">
+    <img src="images\T5_OS_V.png" alt="Doppler Shift" style="width: 100%;">
     <p><strong>Improved Velocity:</strong> Smoother and more consistent velocity estimates due to the dynamic model and prior state incorporation.</p>
   </div>
 </div>
@@ -247,5 +243,5 @@ The analysis shows that under OpenSky conditions, both WLS and EKF methods yield
 
 ## Acknowledgements
 
-Thank you very much for your time, help, and support.
+Thank you very much for your time, guidance, and support.
 
