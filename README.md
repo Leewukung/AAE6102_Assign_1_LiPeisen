@@ -1,6 +1,9 @@
 # AAE6102 Satellite Communication and Navigation Assignment 1
 
-This repository contains the source code and technical report for Assignment 1. The report analyzes two GNSS datasets—OpenSky and Urban—across five tasks: acquisition, tracking, navigation data decoding, positioning estimation, and Kalman filter-based positioning. The following sections summarize the key findings and insights from each task. Images from the report are embedded below to illustrate the analysis.
+**Course:** AAE6102 Satellite Communication and Navigation  
+**Institution:** The Hong Kong Polytechnic University, Department of Aeronautical and Aviation Engineering  
+**Semester:** 2024/25 Semester 2  
+**Student:** Li Peisen (23126149r)
 
 ---
 
