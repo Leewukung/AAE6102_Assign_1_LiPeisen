@@ -45,7 +45,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_OS_SNR.png" alt="SNR" style="width: 100%;">
+    <img src="D:\OneDrive - The Hong Kong Polytechnic University\文档\GitHub\AAE6102_Assign_1_LiPeisen\images\T1_OS_SNR.png" alt="SNR" style="width: 100%;">
     <p><strong>SNR:</strong> All selected satellites have SNR values above the 16 dB-Hz threshold, some reaching 40–50 dB-Hz.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
