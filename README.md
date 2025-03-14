@@ -1,7 +1,7 @@
 # Assignment 1 Report
 
 **Course:** AAE6102 Satellite Communication and Navigation  
-**Institution:** The Hong Kong Polytechnic University, Department of Aeronautical and Aviation Engineering  
+**Institution:** Department of Aeronautical and Aviation Engineering, The Hong Kong Polytechnic University 
 **Semester:** 2024/25 Semester 2  
 **Student:** Li Peisen (23126149r)
 
@@ -123,8 +123,6 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 ### 3.1 OpenSky
 
-![Task3 OpenSky](images/task3_opensky.png)
-
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
     <img src="images/T3_OS_1.png" alt="Correlation Functions" style="width: 100%;">
@@ -134,7 +132,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
   </div>
 </div>
 
-- **Ephemeris Data:** Decoded navigation data is grouped into:
+- **Ephemeris Data**
   - **Core Ephemeris Parameters:** Semi-major axis, eccentricity, inclination, right ascension, and argument of perigee.
   - **Clock Corrections:** Parameters such as af0, af1, af2, and TGD.
   - **Health/Validity Fields:** Such as IODE and SV health.
@@ -179,7 +177,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
     <img src="images\T4_UC_V.png" alt="Doppler Shift" style="width: 100%;">
-    <p><strong>Velocity:</strong> CGreater fluctuations in Vx, Vy, and Vz indicate reduced reliability in motion estimates under urban conditions.</p>
+    <p><strong>Velocity:</strong> Greater fluctuations in Vx, Vy, and Vz indicate reduced reliability in motion estimates under urban conditions.</p>
   </div>
 </div>
 
