@@ -59,7 +59,7 @@ This report analyzes and evaluates GNSS signal processing under two environments
     <p><strong>Fine Frequency:</strong> Small deviations confirm proper frequency alignment.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_OS_CodePhase.png" alt="Code Phase" style="width: 100%;">
+    <img src="D:\OneDrive - The Hong Kong Polytechnic University\文档\GitHub\AAE6102_Assign_1_LiPeisen\images\T1_OS_CodePhase.png" alt="Code Phase" style="width: 100%;">
     <p><strong>Code Phase:</strong> Variation indicates different signal travel times, consistent with open-sky conditions.</p>
   </div>
 </div>
@@ -68,11 +68,11 @@ This report analyzes and evaluates GNSS signal processing under two environments
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images\T1_UC_SNR.jpg" alt="SNR" style="width: 100%;">
+    <img src="D:\OneDrive - The Hong Kong Polytechnic University\文档\GitHub\AAE6102_Assign_1_LiPeisen\images\T1_UC_SNR.jpg" alt="SNR" style="width: 100%;">
     <p><strong>SNR:</strong> Fewer satellites exceed the 11 dB-Hz threshold, indicating weaker signal quality.</p>
   </div>
   <div style="flex: 1; text-align: center; margin: 10px;">
-    <img src="images/T1_U_Doppler.png" alt="Doppler Shift" style="width: 100%;">
+    <img src="images\T1_UC_Doppler.jpg" alt="Doppler Shift" style="width: 100%;">
     <p><strong>Doppler Shift:</strong> Greater variability reflects challenging propagation due to multipath and non-line-of-sight effects.</p>
   </div>
 </div>
